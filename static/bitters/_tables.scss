@@ -1,16 +1,28 @@
 table {
   margin: ($base-line-height / 2) 0;
   width: 100%;
+  padding: 2em;
 }
 
 th {
+  font-family: $header-font-family;
+  font-size: em(22);
+  font-weight: 300;
   font-weight: bold;
   padding: ($base-line-height / 2) 0;
+  text-align: center;
   text-align: left;
 }
 
 td {
-  padding: ($base-line-height / 2) 0;
+  vertical-align: middle;
+
+  &:first-child {
+    color: $light-gray;
+    font-family: $header-font-family;
+    font-size: em(22);
+    width: 2em;
+  }
 }
 
 tr, td, th {
