@@ -90,6 +90,7 @@ table {
     float: left;
     padding: 1em;
     color: white;
+    position: relative;
 
     &:hover {
       .info {
@@ -102,7 +103,7 @@ table {
     }
 
     &:nth-child(2) {
-      background-color: #fa7071;
+      background-color: #4887e3;
     }
 
     &:nth-child(3) {
@@ -110,24 +111,79 @@ table {
     }
 
     &:nth-child(4) {
-      background-color: #fd9845;
-    }
-
-    &:nth-child(4) {
-      background-color: #fd9845;
+      background-color: #fa7071;
     }
 
     &:nth-child(5) {
-      background-color: #fd9845;
+      background-color: #feb82b;
     }
 
     &:nth-child(6) {
-      background-color: #fd9845;
+      background-color: #fa7071;
     }
 
-    .info {
-      @include position(absolute, 0 0 0 0);
-      display: none;
+    &:nth-child(7) {
+      background-color: #fd9845;
+    }
+  }
+
+  span {
+    display: block;
+  }
+
+  .number {
+    &:before {
+      content: "# ";
+      display: inline;
+      color: rgba(white, .5);
+      font-size: em(14);
+    }
+  }
+
+  .name {
+    font-weight: bold;
+    margin-bottom: .5em;
+  }
+
+  .position {
+    &:before {
+      color: rgba(white, .5);
+      content: "position: ";
+      display: inline;
+      font-size: em(13);
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+
+  .games-started {
+    &:before {
+      color: rgba(white, .5);
+      content: "Games Started: ";
+      display: inline;
+      font-size: em(13);
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+
+  .info {
+    @include position(absolute, 0 0 -6.5em -2em);
+    background-color: $header-color;
+    display: none;
+    padding: .75em 1em;
+    width: 300px;
+    z-index: 99;
+
+    &:after {
+      @include size(1em);
+      @include position(absolute, -.5em 0 0 50%);
+      content: " ";
+      display: block;
+      background-color: $header-color;
+      @include transform(rotate(45deg));
     }
   }
 
@@ -148,6 +204,30 @@ table {
   }
 
   .minor.three {
+    width: 10%;
+  }
+
+  .major.four {
+    width: 60%;
+  }
+
+  .mid.four {
+    width: 20%;
+  }
+
+  .minor.four {
+    width: 10%;
+  }
+
+  .major.five {
+    width: 50%;
+  }
+
+  .mid.five {
+    width: 20%;
+  }
+
+  .minor.five {
     width: 10%;
   }
 }
