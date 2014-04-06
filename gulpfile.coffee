@@ -72,7 +72,7 @@ gulp.task 'test_serve', ->
 
 gulp.task 'watch', ->
   gulp.watch(paths.scripts, ['src'])
-  gulp.watch(paths.static,  ['css', 'static'])
+  gulp.watch(paths.static,  ['css'])
 
 # TODO: This won't cause the proc to fail while running a normal test. The
 # @emit('end') is to allow test:watch to work for the time being
