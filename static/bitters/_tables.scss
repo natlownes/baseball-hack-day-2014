@@ -5,22 +5,25 @@ table {
 }
 
 th {
-  font-family: $header-font-family;
   font-size: em(22);
-  font-weight: 300;
-  font-weight: bold;
+  font-weight: 800;
   padding: ($base-line-height / 2) 0;
   text-align: center;
-  text-align: left;
+  border-bottom: 1px solid $base-border-color;
+  color: lighten($base-font-color, 20);
+
+  &:first-child {
+    border: 0;
+  }
 }
 
 td {
   vertical-align: middle;
 
   &:first-child {
-    color: $light-gray;
+    color: $medium-gray;
     font-family: $header-font-family;
-    font-size: em(22);
+    font-size: em(18);
     width: 2em;
   }
 }
