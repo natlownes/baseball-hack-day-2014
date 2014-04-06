@@ -18,6 +18,8 @@ th {
 
 td {
   vertical-align: middle;
+  padding: 0;
+  border: 8px solid white;
 
   &:first-child {
     color: $medium-gray;

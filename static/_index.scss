@@ -94,12 +94,6 @@ table {
     color: white;
     position: relative;
 
-    &:hover {
-      .info {
-        display: block;
-      }
-    }
-
     &:nth-child(1) {
       background-color: #19ae6c;
     }
@@ -129,64 +123,8 @@ table {
     }
   }
 
-  span {
-    display: block;
-  }
-
-  .number {
-    &:before {
-      content: "# ";
-      display: inline;
-      color: rgba(white, .5);
-      font-size: em(14);
-    }
-  }
-
-  .name {
-    font-weight: bold;
-    margin-bottom: .5em;
-  }
-
-  .position {
-    &:before {
-      color: rgba(white, .5);
-      content: "position: ";
-      display: inline;
-      font-size: em(13);
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-  }
-
-  .games-started {
-    &:before {
-      color: rgba(white, .5);
-      content: "Games Started: ";
-      display: inline;
-      font-size: em(13);
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-  }
-
-  .info {
-    @include position(absolute, 0 0 -6.5em -2em);
-    background-color: $header-color;
+  .info, .qtip-default {
     display: none;
-    padding: .75em 1em;
-    width: 300px;
-    z-index: 99;
-
-    &:after {
-      @include size(1em);
-      @include position(absolute, -.5em 0 0 50%);
-      content: " ";
-      display: block;
-      background-color: $header-color;
-      @include transform(rotate(45deg));
-    }
   }
 
   .major.two {
@@ -231,5 +169,68 @@ table {
 
   .minor.five {
     width: 10%;
+  }
+}
+
+.qtip-default {
+  background-color: $header-color;
+  display: none;
+  padding: .75em 1em;
+  z-index: 99;
+  color: white;
+  border: 0;
+  font-family: $base-font-family;
+  font-size: em(16);
+  line-height: 1.3em;
+
+  &:after {
+    @include size(1em);
+    @include position(absolute, -.5em 0 0 50%);
+    content: " ";
+    display: block;
+    background-color: $header-color;
+    @include transform(rotate(45deg));
+  }
+
+  span {
+    display: block;
+  }
+
+  .number {
+    &:before {
+      content: "# ";
+      display: inline;
+      color: rgba(white, .5);
+      font-size: em(14);
+    }
+  }
+
+  .name {
+    font-weight: bold;
+    margin-bottom: .5em;
+  }
+
+  .position {
+    &:before {
+      color: rgba(white, .5);
+      content: "position: ";
+      display: inline;
+      font-size: em(13);
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+
+  .games-started {
+    &:before {
+      color: rgba(white, .5);
+      content: "Games Started: ";
+      display: inline;
+      font-size: em(13);
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
   }
 }
