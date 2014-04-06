@@ -1,6 +1,6 @@
 gulp = require 'gulp'
 
-fs         = require 'fs'
+fs   = require 'fs'
 http = require 'http'
 
 browserify = require 'gulp-browserify'

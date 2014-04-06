@@ -1,12 +1,12 @@
 crypto = require 'crypto'
 
-Q        = require 'q'
-$        = require 'jquery'
-Backbone = require 'backbone'
+fs         = require 'fs'
+Q          = require 'q'
+$          = require 'jquery'
+Backbone   = require 'backbone'
 Backbone.$ = $
 
-#apiRoot   = 'http://localhost:8081/v1/seasons/'
-apiRoot   = 'https://s3.amazonaws.com/api.baseball.narf.io/v1/seasons/'
+apiRoot = 'https://s3.amazonaws.com/api.baseball.narf.io/v1/seasons/'
 
 
 class SelectView extends Backbone.View
@@ -14,21 +14,41 @@ class SelectView extends Backbone.View
 
 class TeamSelect extends SelectView
 
-  template: -> """
-    <select name="team"></select>
-  """
+  constructor: (@teams) ->
+    super
+
+  events:
+    'change select': 'teamSelected'
+
+  template: ->
+    options = for id, data of @teams
+      """<option value="#{id}">#{data.name}</options>"""
+
+    """
+    <select name="team">
+    #{options.join('')}
+    </select>
+    """
+
+  selectedTeamId: ->
+    @$('select option:selected').val()
+
+  teamSelected: =>
+    team = @teams[@selectedTeamId()]
+    @trigger 'selected', team
+
+  render: ->
+    @$el.html(@template())
+    this
 
 
 class YearSelect extends SelectView
   events:
-    'change select': 'fetchTeamIndex'
+    'change select': 'fetchSeason'
 
-  availableYearRange: [1920..2012]
-
-  template: ->
-    yearOptions = for year in @availableYearRange
+  template: (team) ->
+    yearOptions = for year in team.years_active
       """<option value="#{year}">#{year}</options>"""
-
     """
     <select name="year">
        #{yearOptions.join('')}
@@ -38,16 +58,33 @@ class YearSelect extends SelectView
   selectedYear: ->
     @$('select option:selected').val()
 
-  fetchTeamIndex: =>
-    year = @selectedYear()
-    $.getJSON("#{apiRoot}/#{year}/index.json").done (teamIds) =>
-      @trigger 'fetched-team-index', teamIds
+  fetchSeason: =>
+    url = "#{apiRoot}#{@selectedYear()}/#{@team.id}"
 
+  list: (@team) ->
+    @render(@team)
 
-  render: ->
-    @$el.html @template()
+  render: (team) ->
+    console.log @team
+    if team
+      @$el.html @template(team)
     this
 
+
+class App
+  views: {}
+
+  constructor: (teams) ->
+    @views['teams'] = new TeamSelect(teams)
+    @views['years'] = new YearSelect
+
+    @views.teams.on 'selected', (team) =>
+      @views.years.list(team)
+
+  render: ->
+    for name, view of @views
+      $(".#{name}").append(view.render().el)
+    this
 
 team      = 'PHI'
 startYear = 1992
@@ -58,10 +95,12 @@ years = [startYear..endYear]
 requests = for year in years
   $.getJSON("#{apiRoot}#{year}/#{team}")
 
-Q.all(requests).done (results) ->
-  results
+$.getJSON('http://localhost:8222/teams.json').done (teams) ->
+  app = new App(teams)
+  app.render()
 
 
 module.exports = {
   YearSelect
+  App
 }
