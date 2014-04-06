@@ -1,5 +1,5 @@
 # boash
 
 * `npm install`
-* `npm run:watch`
+* `npm run serve`
 * http://localhost:8222/
