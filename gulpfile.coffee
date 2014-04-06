@@ -98,4 +98,4 @@ gulp.task 'test_build', ['src-app-test', 'src-test']
 gulp.task 'test:watch', ->
   gulp.watch([paths.tests, paths.scripts], ['test_build'])
 
-gulp.task 'default', ['src', 'static', 'watch', 'serve']
+gulp.task 'default', ['src', 'css', 'watch', 'serve']
