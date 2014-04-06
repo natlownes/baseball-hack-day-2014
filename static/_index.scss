@@ -1,8 +1,9 @@
 header {
   text-align: center;
-  background-color: #34495c;
+  background-color: $header-color;
   color: white;
   padding: 2em;
+  position: relative;
 
   h1 {
     font-size: 1.3em;
@@ -37,11 +38,14 @@ nav {
 
   .prev {
     @include position(absolute, 0px 0 0px 0px);
+    background-color: darken($header-color, 10);
     padding: 2em;
-    background-color: #FFF;
   }
 
   .next {
+    @include position(absolute, 0px 0px 0px 0);
+    background-color: darken($header-color, 10);
+    padding: 2em;
   }
 }
 
