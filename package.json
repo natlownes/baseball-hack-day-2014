@@ -1,0 +1,30 @@
+{
+  "name": "baseballhackday-2014-philly",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-util": "^2.2.14",
+    "gulp-concat": "^2.2.0",
+    "gulp-browserify": "^0.5.0",
+    "gulp-mocha": "^0.4.1",
+    "gulp": "^3.6.0",
+    "coffee-script": "^1.7.1",
+    "gulp-less": "^1.2.3",
+    "coffeeify": "^0.6.0",
+    "ecstatic": "^0.4.13",
+    "gulp-embedlr": "^0.5.2",
+    "gulp-livereload": "^1.2.0",
+    "tiny-lr": "0.0.5"
+  },
+  "dependencies": {
+    "q": "^1.0.1",
+    "jquery": "^2.1.0",
+    "localStorage": "^1.0.2"
+  }
+}
