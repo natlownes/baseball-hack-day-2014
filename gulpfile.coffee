@@ -74,21 +74,6 @@ gulp.task 'watch', ->
   gulp.watch(paths.scripts, ['src'])
   gulp.watch(paths.static,  ['css'])
 
-# TODO: This won't cause the proc to fail while running a normal test. The
-# @emit('end') is to allow test:watch to work for the time being
-#gulp.task 'test', ->
-  #gulp.src(paths.tests, read: false)
-    #.pipe(mocha(reporter: 'spec', timeout: 200))
-    #.on 'error', (err) ->
-      #console.log(err.toString())
-      #@emit('end')
-
-  #gulp.src(paths.tests, read: false)
-    #.pipe(mocha(reporter: 'spec', timeout: 200))
-    #.on 'error', (err) ->
-      #console.log(err.toString())
-      #@emit('end')
-
 gulp.task 'build', ['src', 'static']
 
 gulp.task 'test', ['src-app-test', 'src-test', 'test_serve']
