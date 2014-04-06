@@ -1,5 +1,4 @@
 table {
-  margin: ($base-line-height / 2) 0;
   width: 100%;
   padding: 2em;
 }
@@ -19,6 +18,8 @@ th {
 
 td {
   vertical-align: middle;
+  padding: 0;
+  border: 8px solid white;
 
   &:first-child {
     color: $medium-gray;
