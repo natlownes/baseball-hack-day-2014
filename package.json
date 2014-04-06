@@ -20,7 +20,8 @@
     "ecstatic": "^0.4.13",
     "gulp-embedlr": "^0.5.2",
     "gulp-livereload": "^1.2.0",
-    "tiny-lr": "0.0.5"
+    "tiny-lr": "0.0.5",
+    "gulp-sass": "~0.7.1"
   },
   "dependencies": {
     "q": "^1.0.1",

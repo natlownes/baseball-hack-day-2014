@@ -11,6 +11,7 @@ less       = require 'gulp-less'
 lrServer   = require('tiny-lr')()
 mocha      = require 'gulp-mocha'
 refresh    = require 'gulp-livereload'
+sass       = require 'gulp-sass'
 
 paths =
   scripts:  './src/**/*.coffee'
@@ -35,8 +36,8 @@ gulp.task 'static', ->
     .pipe(refresh(lrServer))
 
 gulp.task 'css', ->
-  gulp.src('./static/main.less')
-    .pipe(less())
+  gulp.src('./static/*.scss')
+    .pipe(sass())
     .pipe(gulp.dest("#{paths.build}"))
     .pipe(refresh(lrServer))
 
