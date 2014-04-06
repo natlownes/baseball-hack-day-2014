@@ -1,0 +1,68 @@
+header {
+  text-align: center;
+
+  h1 {
+    font-size: 1.3em;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    &:after {
+      $triangle-size: 8px;
+
+      @include position(relative, 28px 0 0 12px);
+      content: '';
+      display: inline;
+      width: 0;
+      height: 0;
+      border-left: $triangle-size solid transparent;
+      border-right: $triangle-size solid transparent;
+      border-top: $triangle-size solid $light-gray;
+    }
+  }
+}
+
+nav {
+  a {
+    text-transform: uppercase;
+  }
+
+  .prev {
+  }
+
+  .next {
+  }
+}
+
+table {
+  div {
+    float: left;
+  }
+
+  .major.two {
+    width: 90%;
+    background: blue;
+  }
+
+  .minor.two {
+    width: 10%;
+    background: red;
+  }
+
+  .major.three {
+    width: 70%;
+    background: blue;
+  }
+
+  .mid.three {
+    width: 20%;
+    background: green;
+  }
+
+  .minor.three {
+    width: 10%;
+    background: red;
+  }
+}
